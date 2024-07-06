@@ -2,24 +2,25 @@ import React, { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../Images/logo.png";
 
-
 const Forget = () => {
-
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const formEmail = useRef()
-  const formToken = useRef()
-  const formNewPassword = useRef()
-  const navigate = useNavigate()
+  const formEmail = useRef();
+  const formToken = useRef();
+  const formNewPassword = useRef();
+  const navigate = useNavigate();
 
   const handleGetToken = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/forgot-password?email=${formEmail.current.value}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `http://localhost:8081/api/forgot-password?email=${formEmail.current.value}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(response.ok);
       if (response.ok) {
         const data = await response.text();
@@ -40,11 +41,11 @@ const Forget = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
-    let token = formToken.current.value
-    let newPassword = formNewPassword.current.value
+    let token = formToken.current.value;
+    let newPassword = formNewPassword.current.value;
 
     try {
-      const response = await fetch("http://localhost:8080/api/reset-password", {
+      const response = await fetch("http://localhost:8081/api/reset-password", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +57,6 @@ const Forget = () => {
         const data = await response.text();
         setMessage(data);
         setError("");
-        
       } else {
         const errorData = await response.text();
         setError(errorData);
@@ -69,12 +69,11 @@ const Forget = () => {
     }
   };
 
-
   return (
     <div className="min-h-[95vh] flex justify-center bg-gray-100 md:mt-[90px] px-4">
       <div className="pt-10">
         <img className="w-24 mx-auto py-6" src={logo} alt="logo" />
-        <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-sm text-[#b40047]">
+        <div className="bg-white p-6 mb-10 rounded-xl shadow-md w-full max-w-sm text-[#b40047]">
           <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">
             Forgt Password
           </h2>
@@ -86,7 +85,6 @@ const Forget = () => {
                 placeholder="Email"
                 className="mt-1 px-4 py-2 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              
             </div>
             <div className="mb-4">
               <input
@@ -113,20 +111,24 @@ const Forget = () => {
             </div>
             {message && <div className="text-green-500 mb-4">{message}</div>}
             {error && <div className="text-red-500 mb-4">{error}</div>}
-            
-             {message === 'Password reset successfully' ?  <NavLink to='/Login'>
-             <button className="w-full bg-[#791b1bd3] text-white py-2 px-4 rounded hover:bg-[#791b1bfe] focus:outline-none
-              focus:ring-2 focus:ring-red-500 mx-auto"       
+
+            {message === "Password reset successfully" ? (
+              <NavLink to="/Login">
+                <button
+                  className="w-full bg-[#791b1bd3] text-white py-2 px-4 rounded hover:bg-[#791b1bfe] focus:outline-none
+              focus:ring-2 focus:ring-red-500 mx-auto"
+                >
+                  Login
+                </button>
+              </NavLink>
+            ) : (
+              <button
+                className="w-full bg-[#b40047] text-white py-2 px-4 rounded hover:bg-[#791b1bfe] focus:outline-none
+              focus:ring-2 focus:ring-red-500 mx-auto"
               >
-             Login
-            </button>
-            </NavLink>  :
-              <button className="w-full bg-[#b40047] text-white py-2 px-4 rounded hover:bg-[#791b1bfe] focus:outline-none
-              focus:ring-2 focus:ring-red-500 mx-auto"       
-              >
-             Reset Password
-            </button>
-            }
+                Reset Password
+              </button>
+            )}
           </form>
         </div>
       </div>

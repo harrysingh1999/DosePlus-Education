@@ -89,35 +89,33 @@
 
 import { NavLink } from "react-router-dom";
 import logo from "../../Images/logo.png";
-import logout from "../../Images/Logout.svg"
+import logout from "../../Images/Logout.svg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useEffect, useRef, useState } from "react";
 
-
 export default function Navbar() {
-  const sidebarRef = useRef(false)
+  const sidebarRef = useRef(false);
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {
     setToggle(!toggle);
   };
 
-  const handleOutsideClick =(e)=>{
-    if(sidebarRef.current && !sidebarRef.current.contains(e.target)){
+  const handleOutsideClick = (e) => {
+    if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
       setToggle(false);
     }
-  }
-  
- useEffect(()=>{
-  document.addEventListener("mousedown", handleOutsideClick)
-  window.addEventListener("scroll", handleOutsideClick)
-  
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    window.addEventListener("scroll", handleOutsideClick);
+
     console.log("hello");
-    return(()=>{
-      document.removeEventListener("mousedown", handleOutsideClick)
-      window.removeEventListener('scroll', handleOutsideClick)
-    })
-      
- },[])
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("scroll", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="">
@@ -145,8 +143,8 @@ export default function Navbar() {
           </div>
 
           {/* Navigation Menu for Desktop */}
-       <div className="md:flex justify-between gap-4 font-semibold px-9">
-          <NavLink
+          <div className="md:flex justify-between gap-4 font-semibold px-9">
+            <NavLink
               to="/"
               className="text-lg text-gray-600 hover:text-red-500"
             >
@@ -188,22 +186,22 @@ export default function Navbar() {
             >
               Dashboard
             </NavLink> */}
-         
           </div>
-           
         </div>
       </div>
 
       {/* Responsive Menu */}
-      <div ref={sidebarRef}
+      <div
+        ref={sidebarRef}
         className={`duration-300 md:hidden fixed  top-0 right-0 h-screen w-1/3 bg-white transition-transform 
                 ${toggle ? "transform-none" : "transform translate-x-full"}
             `}
-        style={{ zIndex: 40, boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}
+        style={{
+          zIndex: 40,
+          boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+        }}
       >
-
         <div className="overflow-y-auto h-full ">
-
           <ul className="mt-16 flex flex-col gap-4 px-4">
             <li>
               <NavLink
@@ -274,8 +272,6 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-
     </div>
   );
 }
-

@@ -1,15 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../Images/logo.png";
-import logout from "../../Images/Logout.svg"
-
+import logout from "../../Images/Logout.svg";
 
 export default function DashboardNavbar() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      let response = await fetch("http://localhost:8080/api/logout");
+      let response = await fetch("http://localhost:8081/api/logout");
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -32,15 +30,15 @@ export default function DashboardNavbar() {
           {/* Hamburger Menu */}
 
           <div className=" flex justify-end ">
-            <div className="ms-4 me-[-16px] flex-row items-center px-5 md:px-9 gap-2 cursor-pointer" 
-            onClick={handleLogout}>
+            <div
+              className="ms-4 me-[-16px] flex-row items-center px-5 md:px-9 gap-2 cursor-pointer"
+              onClick={handleLogout}
+            >
               <img className="w-[30px]" src={logout} alt="" />
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   );
 }
