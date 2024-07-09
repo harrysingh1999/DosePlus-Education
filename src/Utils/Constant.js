@@ -14,4 +14,4 @@ export const emergingDetails = [
   { url: SpaceTechnologies, title: "Space Technology" },
 ];
 
-
+export const baseColor = "#5BCCFA";

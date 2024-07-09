@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import logo from "../../Images/logo.png";
+import logo from "../../Images/logo.svg";
 import logout from "../../Images/Logout.svg";
 
 export default function DashboardNavbar() {

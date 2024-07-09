@@ -32,10 +32,10 @@ export default function About() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-5 ">
-        <div className="flex flex-col items-center sm:justify-start sm:items-center">
+      <div className="grid sm:grid-cols-2 gap-5 font-bold">
+        <div className="flex flex-col items-center sm:justify-start sm:items-center ">
           <img className="w-28" src={Heritage} alt="" />
-          <p className="md:ms-8 text-center">Strong heritage of 5 years.</p>
+          <p className="md:ms-8 text-center ">Strong heritage of 5 years.</p>
         </div>
         <div className="flex flex-col items-center sm:justify-start sm:items-center">
           <img className="w-28" src={Students} alt="" />

@@ -5,7 +5,8 @@ export default function LoginBanner() {
     <>
       <div
         id="login"
-        className="grid grid-cols-12 gap-5 bg-[#791b1bd3] p-5 md:p-20"
+        className="grid grid-cols-12 gap-5 bg-[#5BCCFA] p-5 md:p-20"
+        // className="grid grid-cols-12 gap-5 bg-[#b40048eb] p-5 md:p-20"
       >
         <div className="grid place-items-center col-span-12 md:col-span-8">
           <div className="grid grid-cols-12 gap-2 md:gap-6 lg:gap-7">
@@ -71,12 +72,10 @@ export default function LoginBanner() {
 
         <div className="w-full col-span-12 md:col-span-4">
           <div className="flex md:justify-end ">
-            <div className="w-full md:w-48 lg:w-72 flex md:static md:items-start flex-col items-center">
-              <p className="text-white text-3xl md:text-5xl font-semibold">
-                Student Login
-              </p>
+            <div className="w-full md:w-48 lg:w-72 flex flex-row items-center">
+              <p className="text-xl md:text-3xl font-semibold">Student Login</p>
               <NavLink to="Login">
-                <button className="bg-white py-3 px-7 my-8 rounded font-semibold text-xl">
+                <button className="bg-white py-3 px-2 ms-4 md:px-7 my-8 rounded hover:shadow-lg font-semibold text-xl">
                   Student
                 </button>
               </NavLink>

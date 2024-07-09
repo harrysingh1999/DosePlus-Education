@@ -4,9 +4,16 @@ import Goals from "../../Images/Goals.svg";
 export default function Goal() {
   return (
     <div className="p-5 md:px-24 py-8">
-      <h1 className="text-2xl md:text-4xl font-semibold">Goal</h1>
-      <div id="goal" className="flex">
+      <h1 className="text-2xl md:text-4xl font-bold text-center md:text-start">
+        Goal
+      </h1>
+      <div id="goal">
         <p className="mt-5">
+          <img
+            src={Goals}
+            className="w-44 md:w-48 float-right md:ms-2"
+            alt="Goals"
+          />
           Our goal is to provide facilities like scholarships, books, and
           uniforms to children from government as well as private schools.
           Economic conditions vary among students in private schools, but all
@@ -18,7 +25,6 @@ export default function Goal() {
           development, personality development, computer education, physical
           education, and science workshops.
         </p>
-        <img src={Goals} className="w-52" alt="Goals" />
       </div>
     </div>
   );

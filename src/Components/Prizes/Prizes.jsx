@@ -13,8 +13,8 @@ export default function Prizes() {
 
       <p className="ml-4 my-4">
         Talent Hunt Scholarship Test 202425 powered by @DOSE PLUS Education.
-        Dose Plus is bringing you the Talent Hunt Scholarship Test 2023. This
-        test offers numerous opportunities for students to win exciting prizes.
+        This test offers numerous opportunities for students to win exciting
+        prizes.
       </p>
       <div className="grid grid-cols-12 gap-5">
         <div className="lg:mx-4 col-span-12 md:col-span-4">

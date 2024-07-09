@@ -15,6 +15,9 @@ import SignUp from "./Components/SignUp/Signup.jsx";
 import StudentDashboard from "./Components/Dashboard/StudentDashboard.jsx";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard.jsx";
 import DashboardNavbar from "./Components/Dashboard/DashboardNavbar.jsx";
+import StudentProfile from "./Components/Dashboard/StudentProfile.jsx";
+import CookiePolicy from "./Components/Policies/CookiePolicy.jsx";
+import PrivacyPolicy from "./Components/Policies/PrivacyPolicy.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,13 +28,16 @@ const router = createBrowserRouter(
       <Route path="StudentDashboard" element={<StudentDashboard />} />
       <Route path="AdminDashboard" element={<AdminDashboard />} />
       <Route path="DashboardNavbar" element={<DashboardNavbar />} />
+      <Route path="StudentProfile" element={<StudentProfile />} />
       <Route path="SignUp" element={<SignUp />} />
+      <Route path="CookiePolicy" element={<CookiePolicy />} />
+      <Route path="PrivacyPolicy" element={<PrivacyPolicy />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
   // </React.StrictMode>
 );
