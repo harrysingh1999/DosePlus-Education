@@ -10,7 +10,7 @@ export default function PrizeCard({ url, title, list1, list2, list3 }) {
         <img src={url} alt={title} />
       </div>
       <p className="font-semibold my-3">{title}</p>
-      <ul className="list-outside list-disc text-xs md:text-base">
+      <ul className="list-outside list-disc text-xs md:text-base font-semibold text-[#34a1cc]">
         <li>{list1}</li>
         <li>{list2}</li>
         <li>{list3}</li>

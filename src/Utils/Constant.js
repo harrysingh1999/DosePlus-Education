@@ -3,7 +3,7 @@ import CloudTechnologies from "../Images/EmergingSection/CloudTechnologies.jpg";
 import DataScience from "../Images/EmergingSection/DataScience.jpg";
 import DroneTechnologies from "../Images/EmergingSection/DroneTechnologies.jpeg";
 import Robotics from "../Images/EmergingSection/Robotics.jpg";
-import SpaceTechnologies from "../Images/EmergingSection/SpaceTechnologies.jpg";
+import SpaceTechnologies from "../Images/EmergingSection/SpaceTechnologies.svg";
 
 export const emergingDetails = [
   { url: AI, title: "Artificial Intelligence (AI)" },

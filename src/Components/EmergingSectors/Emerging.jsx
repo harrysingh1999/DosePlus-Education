@@ -18,7 +18,10 @@ export default function Emerging() {
   };
 
   return (
-    <div className="px-4 md:px-20 my-4 md:my-10 bg-[#5BCCFA] overflow-hidden">
+    <div
+      id="emergingSector"
+      className="px-4 md:px-20 my-4 md:my-10 bg-[#5BCCFA] overflow-hidden"
+    >
       {/* <div className=" md:px-20 my-4 md:my-10 bg-[#b40048e7]  overflow-hidden"> */}
       <h1 className="text-base md:text-2xl font-semibold mt-3 text-center">
         DosePlus offers the most Emerging Sectors

@@ -13,7 +13,7 @@ export default function Footer() {
             <a href="#about" className=" hover:underline">
               ABOUT THE PROGRAM
             </a>
-            <p className=" hover:underline">PREVIOUS PAPERS</p>
+
             <NavLink to="/CookiePolicy">
               <p className=" hover:underline">COOKIE POLICY</p>
             </NavLink>
@@ -22,15 +22,6 @@ export default function Footer() {
             </NavLink>
           </div>
         </div>
-
-        {/* <div className="flex justify-center">
-          <div className="text-white text-sm flex flex-col justify-center items-center font-semibold leading-6">
-            <p className=" hover:underline">TERMS & CONDITIONS</p>
-            <p className=" hover:underline">SALES LOGIN</p>
-            <p className=" hover:underline">FINANCE LOGIN</p>
-            <p className=" hover:underline">SCHOOL LOGIN</p>
-          </div>
-        </div> */}
 
         <div className="flex justify-center md:justify-center px-4">
           <div className=" w-[450px] md:w-full text-sm flex flex-col items-center md:items-start font-semibold leading-8">
@@ -59,7 +50,7 @@ export default function Footer() {
         <div className="flex justify-center flex-col pb-5 items-center bg-[#5BCCFA]">
           {/* <div className="flex justify-center flex-col py-5 items-center bg-[#b40048e7]"> */}
           <p className="text-center  font-semibold text-xs md:text-base">
-            Copyright ©2024 All rights reserved
+            Copyright ©2024 All rights reserved | Made with ❤ by Fairwood Tech
           </p>
         </div>
       </div>

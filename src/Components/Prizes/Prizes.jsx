@@ -12,7 +12,7 @@ export default function Prizes() {
       </h1>
 
       <p className="ml-4 my-4">
-        Talent Hunt Scholarship Test 202425 powered by @DOSE PLUS Education.
+        Talent Hunt Scholarship Test 2024-25 powered by @DOSE PLUS Education.
         This test offers numerous opportunities for students to win exciting
         prizes.
       </p>

@@ -23,9 +23,7 @@ export default function DashboardNavbar() {
       <div className="bg-white md:fixed md:top-0 md:left-0 md:right-0 md:z-50 lg:h-24 md:h-24 sm:h-24 flex shadow-lg">
         <div className="w-full py-[12px] items-center flex justify-between mx-auto relative mr-3">
           <div className="flex flex-col justify-center items-center h-10 md:h-20 w-20 md:w-40 ">
-            <NavLink to="/">
-              <img className="w-10 lg:w-16" src={logo} alt="Logo" />
-            </NavLink>
+            <img className="w-10 lg:w-16" src={logo} alt="Logo" />
           </div>
           {/* Hamburger Menu */}
 
