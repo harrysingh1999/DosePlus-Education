@@ -206,23 +206,6 @@ const SignUp = () => {
                     className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor="userType"
-                  >
-                    UserType
-                  </label>
-                  <select
-                    onChange={handleChange}
-                    name="userType"
-                    value={formData.userType}
-                    className="px-4 py-2 text-sm md:text-base text-gray-400 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 "
-                  >
-                    <option>Student</option>
-                    <option>Admin</option>
-                  </select>
-                </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
@@ -293,6 +276,23 @@ const SignUp = () => {
                     className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
+                {/* <div className="flex flex-col gap-1">
+                  <label
+                    className="text-sm md:text-base font-semibold text-gray-600"
+                    htmlFor="userType"
+                  >
+                    UserType
+                  </label>
+                  <select
+                    onChange={handleChange}
+                    name="userType"
+                    value={formData.userType}
+                    className="px-4 py-2 text-sm md:text-base text-gray-400 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 "
+                  >
+                    <option>Student</option>
+                    <option>Admin</option>
+                  </select>
+                </div> */}
               </div>
             </div>
 
