@@ -25,7 +25,7 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = async () => {
-    let response = await fetch("http://localhost:8081/api/logout");
+    let response = await fetch("http://152.52.81.252:8080/api/logout");
     // let json = await response.json()
     // console.log(response);
     navigate("/");
@@ -33,7 +33,7 @@ export default function AdminDashboard() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:8081/api/profiles", {
+    const response = await fetch("http://152.52.81.252:8080/api/profiles", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

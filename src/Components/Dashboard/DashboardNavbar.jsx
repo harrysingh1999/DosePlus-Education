@@ -5,18 +5,19 @@ import logout from "../../Images/Logout.svg";
 export default function DashboardNavbar() {
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      let response = await fetch("http://localhost:8081/api/logout");
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      navigate("/");
-    } catch (error) {
-      console.error("Error logging out:", error);
-      // Handle error logging out, e.g., show error message
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     let response = await fetch("http://152.52.81.252:8080/api/logout");
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! Status: ${response.status}`);
+  //     }
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.error("Error logging out:", error);
+  //     // Handle error logging out, e.g., show error message
+  //   }
+  // };
+  const handleLogout = () => navigate("/");
 
   return (
     <div className="">

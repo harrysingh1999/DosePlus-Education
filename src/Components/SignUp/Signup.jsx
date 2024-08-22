@@ -20,42 +20,51 @@ const SignUp = () => {
     phoneNumber: "",
     email: "",
     password: "",
-    userType: "Student",
   });
 
   const [message, setMessage] = useState("");
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userData = JSON.parse(localStorage.getItem("userData")) || {};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   window.scrollTo(0, 0);
+  //   const response = await fetch("http://152.52.81.252:8080/api/signup", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   });
+  //   console.log(response.ok);
+
+  //   if (response.ok) {
+  //     const result = await response.json();
+  //     console.log(result);
+  //     setMessage("Successfully signed up!");
+  //   } else {
+  //     const error = await response.text();
+  //     if (error === "Username already exists") {
+  //       setMessage("Username already exists");
+  //     } else if (error === "Email already exists") {
+  //       setMessage("Email already exists");
+  //     } else {
+  //       setMessage("An error occurred during signup.");
+  //     }
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    window.scrollTo(0, 0);
-    const response = await fetch("http://localhost:8081/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    console.log(response.ok);
-
-    if (response.ok) {
-      const result = await response.json();
-      console.log(result);
-      setMessage("Successfully signed up!");
+    if (formData.username !== userData.username) {
+      localStorage.removeItem("userData");
+      localStorage.setItem("userData", JSON.stringify(formData));
     } else {
-      const error = await response.text();
-      if (error === "Username already exists") {
-        setMessage("Username already exists");
-      } else if (error === "Email already exists") {
-        setMessage("Email already exists");
-      } else {
-        setMessage("An error occurred during signup.");
-      }
+      console.log("username already exist");
     }
   };
 

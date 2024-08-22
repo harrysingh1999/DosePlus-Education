@@ -45,7 +45,7 @@
 //   const getResult = async () => {
 //     try {
 //       let response = await fetch(
-//         `http://localhost:8081/api/profiles/rollno/${rollNo}`
+//         `http://152.52.81.252:8080/api/profiles/rollno/${rollNo}`
 //       );
 //       let jsData = await response.json();
 //       console.log(jsData);
@@ -353,7 +353,7 @@ export default function StudentDashboard() {
   const getResult = async () => {
     try {
       let response = await fetch(
-        `http://localhost:8081/api/profiles/rollno/${rollNo}`
+        `http://152.52.81.252:8080/api/profiles/rollno/${rollNo}`
       );
       let jsData = await response.json();
       setDefaultPercentage(jsData.totalPercentage);

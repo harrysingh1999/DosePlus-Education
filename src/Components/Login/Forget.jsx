@@ -12,7 +12,7 @@ const Forget = () => {
   const handleGetToken = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8081/api/forgot-password?email=${formEmail.current.value}`,
+        `http://152.52.81.252:8080/api/forgot-password?email=${formEmail.current.value}`,
         {
           method: "PUT",
           headers: {
@@ -44,13 +44,16 @@ const Forget = () => {
     let newPassword = formNewPassword.current.value;
 
     try {
-      const response = await fetch("http://localhost:8081/api/reset-password", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token, newPassword }),
-      });
+      const response = await fetch(
+        "http://152.52.81.252:8080/api/reset-password",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token, newPassword }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.text();

@@ -6,45 +6,53 @@ const Login = () => {
   let formusername = useRef();
   let formpassword = useRef();
 
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userData = JSON.parse(localStorage.getItem("userData") || {});
 
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   let username = formusername.current.value;
+  //   let password = formpassword.current.value;
+  //   const loginDetails = { username, password };
+
+  //   try {
+  //     const response = await fetch("http://152.52.81.252:8080/api/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(loginDetails),
+  //     });
+  //     console.log(response);
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log("Login successful", data);
+  //       localStorage.setItem("userData", JSON.stringify(data));
+  //       navigate("/StudentDashboard");
+  //     } else if (
+  //       formusername.current.value === "" &&
+  //       formpassword.current.value === ""
+  //     ) {
+  //       setError("Username and Password can't be empty");
+  //     } else {
+  //       setError("Invalid username or password");
+  //     }
+  //   } catch (error) {
+  //     setError(error);
+  //   }
+  // };
   const handleLogin = async (e) => {
     e.preventDefault();
     let username = formusername.current.value;
     let password = formpassword.current.value;
-    const loginDetails = { username, password };
 
-    try {
-      const response = await fetch("http://localhost:8081/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginDetails),
-      });
-      console.log(response);
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Login successful", data);
-        localStorage.setItem("userData", JSON.stringify(data));
-        // userData.userType === "Student"
-        //   ?
-        navigate("/StudentDashboard");
-        // : navigate("/AdminDashboard");
-      } else if (
-        formusername.current.value === "" &&
-        formpassword.current.value === ""
-      ) {
-        setError("Username and Password can't be empty");
-      } else {
-        setError("Invalid username or password");
-      }
-    } catch (error) {
-      setError(error);
+    if (username === userData?.username && password === userData?.password) {
+      navigate("/StudentDashboard");
+    } else {
+      console.log("login failed");
     }
   };
 
