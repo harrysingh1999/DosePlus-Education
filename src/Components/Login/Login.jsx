@@ -6,7 +6,6 @@ const Login = () => {
   let formusername = useRef();
   let formpassword = useRef();
 
-  const userData = JSON.parse(localStorage.getItem("userData") || {});
 
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -45,6 +44,7 @@ const Login = () => {
   //   }
   // };
   const handleLogin = async (e) => {
+    const userData = JSON.parse(localStorage.getItem("userData") || {});
     e.preventDefault();
     let username = formusername.current.value;
     let password = formpassword.current.value;
@@ -85,12 +85,12 @@ const Login = () => {
                 placeholder="Password"
                 className="mt-1 px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <NavLink
+              {/* <NavLink
                 to="/ForgetPassword"
                 className="text-xs md:text-sm text-blue-500 hover:underline mt-2 block md:ml-48 font-bold"
               >
                 Forgot Password?
-              </NavLink>
+              </NavLink> */}
             </div>
           </form>
 
