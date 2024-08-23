@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../Images/logo.svg";
-import { studentMarks, totalPercentage } from "../../Utils/Constant";
-// import CheckboxDemo from "../Checkbox/CheckboxDemo";
-// import CheckBox from "../Checkbox/CheckBox";
-// import CustomeCheckBox from "../Checkbox/CustomeCheckBox";
+import { signupDetails } from "../../Utils/Constant";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -13,13 +10,12 @@ const SignUp = () => {
     name: "",
     fatherName: "",
     dob: "",
-    username: "",
     myClass: "",
-    section: "",
     rollNo: "",
-    schoolName: "",
+    section: "",
     phoneNumber: "",
     email: "",
+    username: "",
     password: "",
   });
 
@@ -59,13 +55,36 @@ const SignUp = () => {
   //   }
   // };
 
+  const [userMarks, setUserMarks] = useState({});
+
+  useEffect(() => {
+    const studentMarks = {
+      mathsScore: Math.floor(Math.random() * 100 + 1),
+      englishScore: Math.floor(Math.random() * 100 + 1),
+      hindiScore: Math.floor(Math.random() * 100 + 1),
+      scienceScore: Math.floor(Math.random() * 100 + 1),
+      socialScienceScore: Math.floor(Math.random() * 100 + 1),
+    };
+    setUserMarks(studentMarks);
+  }, []);
+
+  const totalPercentage = (
+    ((userMarks.mathsScore +
+      userMarks.englishScore +
+      userMarks.hindiScore +
+      userMarks.scienceScore +
+      userMarks.socialScienceScore) /
+      500) *
+    100
+  ).toFixed(1);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.username !== userData.username) {
       localStorage.removeItem("userData");
       localStorage.setItem("userData", JSON.stringify(formData));
       localStorage.removeItem("userMarks");
-      localStorage.setItem("userMarks", JSON.stringify(studentMarks));
+      localStorage.setItem("userMarks", JSON.stringify(userMarks));
       localStorage.removeItem("studentTotalPercentage");
       localStorage.setItem(
         "studentTotalPercentage",
@@ -77,13 +96,38 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center md:mt-[90px] bg-gray-100 px-5">
-      <div className=" w-full sm:w-auto mx-auto py-6">
-        <img className="w-16 md:w-24 mx-auto py-6" src={logo} alt="logo" />
-        <div className="bg-white p-6 mb-5 rounded-xl shadow-md">
-          <h2 className="text-xl md:text-2xl font-bold mb-6 sm:mx-52 md:mx-64 text-center text-[#5BCCFA]">
-            Sign Up
-          </h2>
+    <div className="flex flex-col items-center justify-center bg-gray-100 pt-28">
+      <img className="w-16 md:w-24 mx-auto py-6" src={logo} alt="logo" />
+      <div className="bg-white p-6 mb-5 rounded-xl shadow-md w-[50%] mx-auto">
+        <h2 className="text-center text-2xl font-bold mb-4 text-[#5BCCFA]">
+          Sign Up
+        </h2>
+
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="flex flex-wrap justify-around">
+            {signupDetails.map((input) => {
+              return (
+                <div className="flex flex-col gap-1" key={input.label}>
+                  <label
+                    className="text-sm md:text-base font-semibold text-gray-600"
+                    htmlFor=""
+                  >
+                    {input.label}
+                  </label>
+                  <input
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    required
+                    name={input.name}
+                    value={formData[input.name]}
+                    onChange={handleChange}
+                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              );
+            })}
+          </div>
+
           {message && (
             <p className="mb-2 text-center text-red-500">{message}</p>
           )}
@@ -97,8 +141,7 @@ const SignUp = () => {
               </NavLink>
             </div>
           )}
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="grid grid-cols-1 gap-4">
+          {/* <div className="grid grid-cols-1 gap-4">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1">
                   <label
@@ -293,33 +336,15 @@ const SignUp = () => {
                     className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                {/* <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor="userType"
-                  >
-                    UserType
-                  </label>
-                  <select
-                    onChange={handleChange}
-                    name="userType"
-                    value={formData.userType}
-                    className="px-4 py-2 text-sm md:text-base text-gray-400 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 "
-                  >
-                    <option>Student</option>
-                    <option>Admin</option>
-                  </select>
-                </div> */}
               </div>
-            </div>
+            </div> */}
 
-            <div className="flex justify-center mt-6">
-              <button className="w-full text-sm md:text-base bg-[#5BCCFA] text-white py-2 px-4 rounded hover:bg-[#34a1cc] focus:outline-none focus:ring-2">
-                Register
-              </button>
-            </div>
-          </form>
-        </div>
+          <div className="flex justify-center mt-6">
+            <button className="w-full text-sm md:text-base bg-[#5BCCFA] text-white py-2 px-4 rounded hover:bg-[#34a1cc] focus:outline-none focus:ring-2">
+              Register
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

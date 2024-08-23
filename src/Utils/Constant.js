@@ -18,22 +18,65 @@ export const baseColor = "#5BCCFA";
 
 const userMarks = JSON.parse(localStorage.getItem("userMarks")) || {};
 
-export const studentMarks = {
-  mathsScore: Math.floor(Math.random() * 100 + 1),
-  englishScore: Math.floor(Math.random() * 100 + 1),
-  hindiScore: Math.floor(Math.random() * 100 + 1),
-  scienceScore: Math.floor(Math.random() * 100 + 1),
-  socialScienceScore: Math.floor(Math.random() * 100 + 1),
-};
-
-export const totalPercentage = (
-  ((studentMarks.mathsScore +
-    studentMarks.englishScore +
-    studentMarks.hindiScore +
-    studentMarks.scienceScore +
-    studentMarks.socialScienceScore) /
-    500) *
-  100
-).toFixed(1);
-
-console.log(totalPercentage);
+export const signupDetails = [
+  {
+    label: "Name",
+    placeholder: "Name",
+    type: "text",
+    name: "name",
+  },
+  {
+    label: "Father Name",
+    placeholder: "Father Name",
+    type: "text",
+    name: "fatherName",
+  },
+  {
+    label: "Date Of Birth",
+    placeholder: "dd-mm-yyyy",
+    type: "date",
+    name: "dob",
+  },
+  {
+    label: "Class",
+    placeholder: "Class",
+    type: "text",
+    name: "myClass",
+  },
+  {
+    label: "Roll no.",
+    placeholder: "Enter your Roll no.",
+    type: "number",
+    name: "rollNo",
+  },
+  {
+    label: "Section",
+    placeholder: "e.g A, B",
+    type: "text",
+    name: "section",
+  },
+  {
+    label: "Phone no.",
+    placeholder: "Phone number",
+    type: "number",
+    name: "phoneNumber",
+  },
+  {
+    label: "Email",
+    placeholder: "Email",
+    type: "email",
+    name: "email",
+  },
+  {
+    label: "Username",
+    placeholder: "Username",
+    type: "text",
+    name: "username",
+  },
+  {
+    label: "Password",
+    placeholder: "Password",
+    type: "Password",
+    name: "password",
+  },
+];

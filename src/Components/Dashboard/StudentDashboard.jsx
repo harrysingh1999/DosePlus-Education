@@ -43,7 +43,6 @@ export default function StudentDashboard() {
     myClass,
     dob,
     id,
-    memberShip,
   } = userData;
 
   // const getResult = async () => {
@@ -114,11 +113,6 @@ export default function StudentDashboard() {
                 style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px" }}
                 className="bg-white rounded-lg py-5 mx-5 md:px-10"
               >
-                {memberShip && (
-                  <p className="text-xl md:text-2xl border-2 py-2 rounded-lg border-[#5BCCFA] font-bold text-center">
-                    Membership Taken{" "}
-                  </p>
-                )}
                 <div className="flex flex-row justify-between gap-5 p-5 sm:px-10 md:px-20 mt-6">
                   <div className="flex flex-col justify-between items-center">
                     <h1
