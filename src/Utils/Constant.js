@@ -15,3 +15,25 @@ export const emergingDetails = [
 ];
 
 export const baseColor = "#5BCCFA";
+
+const userMarks = JSON.parse(localStorage.getItem("userMarks")) || {};
+
+export const studentMarks = {
+  mathsScore: Math.floor(Math.random() * 100 + 1),
+  englishScore: Math.floor(Math.random() * 100 + 1),
+  hindiScore: Math.floor(Math.random() * 100 + 1),
+  scienceScore: Math.floor(Math.random() * 100 + 1),
+  socialScienceScore: Math.floor(Math.random() * 100 + 1),
+};
+
+export const totalPercentage = (
+  ((studentMarks.mathsScore +
+    studentMarks.englishScore +
+    studentMarks.hindiScore +
+    studentMarks.scienceScore +
+    studentMarks.socialScienceScore) /
+    500) *
+  100
+).toFixed(1);
+
+console.log(totalPercentage);

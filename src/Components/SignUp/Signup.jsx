@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../Images/logo.svg";
+import { studentMarks, totalPercentage } from "../../Utils/Constant";
 // import CheckboxDemo from "../Checkbox/CheckboxDemo";
 // import CheckBox from "../Checkbox/CheckBox";
 // import CustomeCheckBox from "../Checkbox/CustomeCheckBox";
@@ -63,6 +64,13 @@ const SignUp = () => {
     if (formData.username !== userData.username) {
       localStorage.removeItem("userData");
       localStorage.setItem("userData", JSON.stringify(formData));
+      localStorage.removeItem("userMarks");
+      localStorage.setItem("userMarks", JSON.stringify(studentMarks));
+      localStorage.removeItem("studentTotalPercentage");
+      localStorage.setItem(
+        "studentTotalPercentage",
+        JSON.stringify(totalPercentage)
+      );
     } else {
       console.log("username already exist");
     }
