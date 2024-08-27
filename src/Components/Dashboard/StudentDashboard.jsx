@@ -31,8 +31,6 @@ export default function StudentDashboard() {
     localStorage.getItem("studentTotalPercentage")
   );
 
-  const [marks, setMarks] = useState(userMarks);
-
   const {
     name,
     rollNo,
@@ -45,22 +43,9 @@ export default function StudentDashboard() {
     id,
   } = userData;
 
-  // const getResult = async () => {
-  //   try {
-  //     let response = await fetch(
-  //       `http://152.52.81.252:8080/api/profiles/rollno/${rollNo}`
-  //     );
-  //     let jsData = await response.json();
-  //     setDefaultPercentage(jsData.totalPercentage);
-  //     setScore(jsData);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
   useEffect(() => {
     setDefaultPercentage(studentTotalPercentage);
-    setScore(marks);
+    setScore(userMarks);
   }, []);
 
   const handleMarks = (e) => {
@@ -234,9 +219,7 @@ export default function StudentDashboard() {
                       You are {score.remarks}
                     </p>
                   </div>
-                  <div>
-                    <div className="w-full h-[35px] border-b-2 border-gray-400 px-2 flex flex-row items-center"></div>
-                  </div>
+
                   <div className="grid grid-cols-2 md:grid-cols-4 py-3">
                     <div className="flex items-center gap-2 ">
                       <div className="min-w-3 h-3 md:min-w-4 md:h-4 rounded-full bg-[#06a948]"></div>

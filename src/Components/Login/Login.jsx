@@ -52,6 +52,7 @@ const Login = () => {
     if (username === userData?.username && password === userData?.password) {
       navigate("/StudentDashboard");
     } else {
+      setError('Invalid username or password')
       console.log("login failed");
     }
   };

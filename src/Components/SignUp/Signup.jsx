@@ -81,6 +81,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.username !== userData.username) {
+      setMessage("Successfully Signed up!");
       localStorage.removeItem("userData");
       localStorage.setItem("userData", JSON.stringify(formData));
       localStorage.removeItem("userMarks");
@@ -91,7 +92,7 @@ const SignUp = () => {
         JSON.stringify(totalPercentage)
       );
     } else {
-      console.log("username already exist");
+      setMessage("Username already exist");
     }
   };
 
@@ -129,218 +130,29 @@ const SignUp = () => {
           </div>
 
           {message && (
-            <p className="mb-2 text-center text-red-500">{message}</p>
+            <p
+              className={`text-center ${
+                formData.username !== userData.username
+                  ? "text-green-400"
+                  : "text-red-500 "
+              }  mt-4`}
+            >
+              {message}
+            </p>
           )}
-          {message === "Successfully signed up!" && (
-            <div className="flex justify-center">
-              <NavLink to="/Login">
-                <button className="bg-[#5BCCFA] rounded-lg p-2 text-center mb-4">
+          {message === "Successfully Signed up!" && (
+            <NavLink to="/Login">
+              <div className="flex justify-center w-full">
+                <button className="bg-[#5BCCFA] hover:bg-[#31b8ed] text-white rounded-lg w-full p-2 text-center mt-2">
                   {" "}
                   Go to Login{" "}
                 </button>{" "}
-              </NavLink>
-            </div>
+              </div>
+            </NavLink>
           )}
-          {/* <div className="grid grid-cols-1 gap-4">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    required
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Father's Name
-                  </label>
-                  <input
-                    type="text"
-                    name="fatherName"
-                    placeholder="Father's Name"
-                    value={formData.fatherName}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Date Of Birth
-                  </label>
-                  <input
-                    type="date"
-                    name="dob"
-                    placeholder="DOB: 23/9/1990"
-                    value={formData.dob}
-                    onChange={handleChange}
-                    className="px-4 py-2 text-sm md:text-base text-gray-400 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    School Name
-                  </label>
-                  <input
-                    type="text"
-                    name="schoolName"
-                    placeholder="School"
-                    value={formData.schoolName}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Class
-                  </label>
-                  <input
-                    type="text"
-                    name="myClass"
-                    placeholder="Class"
-                    value={formData.myClass}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Roll no.
-                  </label>
-                  <input
-                    type="number"
-                    name="rollNo"
-                    placeholder="Enter your Roll no"
-                    value={formData.rollNo}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Section
-                  </label>
-                  <input
-                    type="text"
-                    name="section"
-                    placeholder="section: B"
-                    value={formData.section}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Phone no.
-                  </label>
-                  <input
-                    type="number"
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    className="text-sm md:text-base font-semibold text-gray-600"
-                    htmlFor=""
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    className="px-4 py-2 placeholder:text-sm md:placeholder:text-base w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-            </div> */}
-
-          <div className="flex justify-center mt-6">
-            <button className="w-full text-sm md:text-base bg-[#5BCCFA] text-white py-2 px-4 rounded hover:bg-[#34a1cc] focus:outline-none focus:ring-2">
+          <div className="flex justify-center mt-4">
+            <button className="w-full text-sm md:text-base bg-[#5BCCFA] text-white py-2 px-4 rounded hover:bg-[#31b8ed] focus:outline-none focus:ring-2">
               Register
             </button>
           </div>
