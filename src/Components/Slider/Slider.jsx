@@ -2,7 +2,7 @@ import React from "react";
 
 const Slider = () => {
   return (
-    <div className="w-full absolute top-0 md:top-6 overflow-hidden bg-[#5BCCFA] text-black py-1">
+    <div className="w-full absolute top-0 md:top-2 overflow-hidden bg-[#5BCCFA] text-black py-1">
       <div className="animate-marquee">
         <p className="inline-block font-semibold whitespace-nowrap text-xs md:text-base">
           DOSE Plus Education organizes seminars every December, guiding

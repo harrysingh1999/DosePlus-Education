@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <div className="">
-      <div className="bg-white md:fixed md:top-0 md:left-0 md:right-0 md:z-50 lg:h-24 md:h-24 sm:h-24 flex shadow-lg">
+      <div className="bg-white md:fixed md:top-0 md:left-0 md:right-0 md:z-50 h-20 flex shadow-lg">
         <div className="w-full py-[12px] items-center flex justify-between mx-auto relative mr-3">
           <div className="flex flex-col justify-center items-center h-10 md:h-20 w-20 md:w-40 ">
             <NavLink to="/">
@@ -55,28 +55,28 @@ export default function Navbar() {
 
           {/* Navigation Menu for Desktop */}
           <div className="hidden md:flex gap-4 font-semibold px-9">
-            <NavLink to="/" className={`text-lg hover:text-[#5BCCFA]`}>
+            <NavLink to="/" className={`text-base hover:text-[#5BCCFA]`}>
               Home
             </NavLink>
 
-            <a href="#about" className={`text-lg hover:text-[#5BCCFA]`}>
+            <a href="#about" className={`text-base hover:text-[#5BCCFA]`}>
               About
             </a>
 
-            <a href="#prize" className={`text-lg hover:text-[#5BCCFA]`}>
+            <a href="#prize" className={`text-base hover:text-[#5BCCFA]`}>
               Prize
             </a>
             <a
               href="#emergingSector"
-              className={`text-lg hover:text-[#5BCCFA]`}
+              className={`text-base hover:text-[#5BCCFA]`}
             >
               Emerging
             </a>
 
-            <NavLink to="/Login" className={`text-lg hover:text-[#5BCCFA]`}>
+            <NavLink to="/Login" className={`text-base hover:text-[#5BCCFA]`}>
               Login
             </NavLink>
-            <NavLink to="/Signup" className={`text-lg hover:text-[#5BCCFA]`}>
+            <NavLink to="/Signup" className={`text-base hover:text-[#5BCCFA]`}>
               SignUp
             </NavLink>
           </div>

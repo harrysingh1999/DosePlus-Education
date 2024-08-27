@@ -11,14 +11,14 @@ export default function Footer() {
         <div className="flex justify-center">
           <div className=" text-sm flex flex-col justify-center items-center font-semibold leading-6">
             <a href="#about" className=" hover:underline">
-              ABOUT THE PROGRAM
+              About the program
             </a>
 
             <NavLink to="/CookiePolicy">
-              <p className=" hover:underline">COOKIE POLICY</p>
+              <p className=" hover:underline">Cookie Policy</p>
             </NavLink>
             <NavLink to="/PrivacyPolicy">
-              <p className=" hover:underline">PRIVACY POLICY</p>
+              <p className=" hover:underline">Privacy Policy</p>
             </NavLink>
           </div>
         </div>

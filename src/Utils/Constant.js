@@ -16,8 +16,6 @@ export const emergingDetails = [
 
 export const baseColor = "#5BCCFA";
 
-const userMarks = JSON.parse(localStorage.getItem("userMarks")) || {};
-
 export const signupDetails = [
   {
     label: "Name",
@@ -79,4 +77,39 @@ export const signupDetails = [
     type: "Password",
     name: "password",
   },
+];
+
+export const checkboxDetails = [
+  {
+    type: "checkbox",
+    name: "mathsScore",
+    label: "Mathematics",
+  },
+  {
+    type: "checkbox",
+    name: "englishScore",
+    label: "English",
+  },
+  {
+    type: "checkbox",
+    name: "hindiScore",
+    label: "Hindi",
+  },
+  {
+    type: "checkbox",
+    name: "scienceScore",
+    label: "Science",
+  },
+  {
+    type: "checkbox",
+    name: "socialScienceScore",
+    label: "Social Science",
+  },
+];
+
+export const divisionDetails = [
+  { division: "First Division", color: "bg-[#06a948]" },
+  { division: "Second Division", color: "bg-[#dac134]" },
+  { division: "Third Division", color: "bg-[#fe852e]" },
+  { division: "Fourth Division/Fail", color: "bg-[#fd0000]" },
 ];

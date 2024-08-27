@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import StudentProfile from "./StudentProfile";
-import { baseColor } from "../../Utils/Constant";
+import {
+  baseColor,
+  checkboxDetails,
+  divisionDetails,
+} from "../../Utils/Constant";
 
 export default function StudentDashboard() {
   const [score, setScore] = useState({
@@ -106,11 +109,18 @@ export default function StudentDashboard() {
                       Score Card
                     </h1>
                     <div
-                      className={`md:h-28 h-20 w-20 md:w-28 rounded-full border-[8px] md:border-[10px] mb-10 border-[${baseColor}]  grid place-items-center`}
+                      className={`md:h-28 h-20 w-20 md:w-28 rounded-full border-[8px] md:border-[10px] mb-10 
+                        border-[${baseColor}] font-bold  grid place-items-center text-base md:text-xl ${
+                        defaultPercentage >= 85 || percentage >= 85
+                          ? "text-green-600"
+                          : defaultPercentage >= 70 || percentage >= 70
+                          ? "text-[#dac134]"
+                          : defaultPercentage >= 35 || percentage >= 35
+                          ? "text-[#fe852e]"
+                          : "text-[#fd0000]"
+                      }`}
                     >
-                      <span className="font-bold md:text-2xl text-[#34a1cc]">
-                        {defaultPercentage || percentage}%
-                      </span>
+                      {defaultPercentage || percentage}%
                     </div>
                   </div>
 
@@ -121,77 +131,23 @@ export default function StudentDashboard() {
                       </h3>
                     </div>
                     <ul>
-                      <li className="flex items-center">
-                        {" "}
-                        <input
-                          type="checkbox"
-                          name="mathsScore"
-                          value={score?.mathsScore}
-                          onChange={handleMarks}
-                          checked={score2?.mathsScore ? true : false}
-                        />
-                        <span className="ml-2 text-sm md:text-base">
-                          Mathematics
-                        </span>
-                      </li>
-                      <li className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="englishScore"
-                          value={score?.englishScore}
-                          onChange={handleMarks}
-                          checked={
-                            score2?.englishScore || score2.englishScore === 0
-                              ? true
-                              : false
-                          }
-                        />
-                        <span className="ml-2">English</span>
-                      </li>
-                      <li className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="hindiScore"
-                          value={score?.hindiScore}
-                          onChange={handleMarks}
-                          checked={
-                            score2?.hindiScore || score2?.hindiScore === 0
-                              ? true
-                              : false
-                          }
-                        />
-                        <span className="ml-2">Hindi</span>
-                      </li>
-                      <li className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="scienceScore"
-                          value={score?.scienceScore}
-                          onChange={handleMarks}
-                          checked={
-                            score2?.scienceScore || score2?.scienceScore === 0
-                              ? true
-                              : false
-                          }
-                        />
-                        <span className="ml-2">Science</span>
-                      </li>
-                      <li className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="socialScienceScore"
-                          value={score?.socialScienceScore}
-                          onChange={handleMarks}
-                          checked={
-                            score2?.socialScienceScore ||
-                            score2?.socialScienceScore === 0
-                              ? true
-                              : false
-                          }
-                          className="checked:bg-blue-600 checked:border-transparent"
-                        />
-                        <span className="ml-2 w-max">Social Science</span>
-                      </li>
+                      {checkboxDetails.map((checkbox) => {
+                        return (
+                          <li key={checkbox.name} className="flex items-center">
+                            {" "}
+                            <input
+                              type={checkbox.type}
+                              name={checkbox.name}
+                              value={score[checkbox.name]}
+                              onChange={handleMarks}
+                              checked={score2[checkbox.name] ? true : false}
+                            />
+                            <span className="ml-2 text-sm md:text-base">
+                              {checkbox.label}
+                            </span>
+                          </li>
+                        );
+                      })}
                       <li className="flex items-center">
                         <input
                           type="checkbox"
@@ -204,41 +160,48 @@ export default function StudentDashboard() {
                     </ul>
                   </div>
                 </div>
-                <div className="px-5 md:p-0">
+                <div className="px-3 md:p-0">
                   <div className="flex mt-2 flex-row items-center">
                     <p className="min-w-24 md:text-xl font-semibold">
                       Remarks :
                     </p>
                     <p
                       className={`w-full text-sm md:text-base font-semibold h-[35px] border-b-2 border-gray-400 px-2 flex flex-row items-center ${
-                        score.remarks === "Fail"
-                          ? "text-red-600"
-                          : "text-green-600"
-                      }`}
+                        defaultPercentage >= 85 || percentage >= 85
+                          ? "text-green-600"
+                          : defaultPercentage >= 70 || percentage >= 70
+                          ? "text-[#dac134]"
+                          : defaultPercentage >= 35 || percentage >= 35
+                          ? "text-[#fe852e]"
+                          : "text-[#fd0000]"
+                      } text-base md:text-xl`}
                     >
-                      You are {score.remarks}
+                      {`You ${
+                        defaultPercentage >= 85 || percentage >= 85
+                          ? "got 1st Division"
+                          : defaultPercentage >= 70 || percentage >= 70
+                          ? "got 2nd Division"
+                          : defaultPercentage >= 35 || percentage >= 35
+                          ? "got 3rd Division"
+                          : "are Fail"
+                      }
+                      `}
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 py-3">
-                    <div className="flex items-center gap-2 ">
-                      <div className="min-w-3 h-3 md:min-w-4 md:h-4 rounded-full bg-[#06a948]"></div>
-                      <p className="text-xs md:text-base">First Division</p>
-                    </div>
-                    <div className="flex items-center gap-2 ">
-                      <div className="min-w-3 h-3 md:min-w-4 md:h-4 rounded-full bg-[#ffd028]"></div>
-                      <p className="text-xs md:text-base">Second Division</p>
-                    </div>
-                    <div className="flex items-center gap-2 ">
-                      <div className="min-w-3 h-3 md:min-w-4 md:h-4 rounded-full bg-[#fe852e]"></div>
-                      <p className="text-xs md:text-base">Third Division</p>
-                    </div>
-                    <div className="flex items-center gap-2 ">
-                      <div className="min-w-3 h-3 md:min-w-4 md:h-4 rounded-full bg-[#fd0000]"></div>
-                      <p className="text-xs w-max md:text-base">
-                        Fourth Division/FaiI
-                      </p>
-                    </div>
+                    {divisionDetails.map((division) => {
+                      return (
+                        <div className="flex items-center gap-2 ">
+                          <div
+                            className={`min-w-3 h-3 md:min-w-4 md:h-4 rounded-full ${division.color}`}
+                          ></div>
+                          <p className="text-xs md:text-base">
+                            {division.division}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
