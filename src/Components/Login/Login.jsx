@@ -27,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[86vh] flex flex-col items-center justify-center bg-gray-100 md:mt-[90px] px-4">
+    <div className="min-h-[86vh] flex flex-col items-center justify-center bg-gray-100 md:mt-[80px] px-4">
       <img className="w-16 md:w-24 mx-auto py-6" src={logo} alt="logo" />
       <div className={`bg-white mb-10 p-6 rounded-xl shadow-md w-[90%] md:w-[40%] lg:w-[30%] `}>
         <h2 className="text-xl md:text-2xl font-bold mb-4 text-center text-[#5BCCFA]">

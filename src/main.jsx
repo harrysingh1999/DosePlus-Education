@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -9,24 +9,33 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import Home from "./Components/Home/Home.jsx";
-import Login from "./Components/Login/Login.jsx";
-import Forget from "./Components/Login/Forget.jsx";
-import SignUp from "./Components/SignUp/Signup.jsx";
-import StudentDashboard from "./Components/Dashboard/StudentDashboard.jsx";
-import AdminDashboard from "./Components/Dashboard/AdminDashboard.jsx";
-import DashboardNavbar from "./Components/Dashboard/DashboardNavbar.jsx";
-import StudentProfile from "./Components/Dashboard/StudentProfile.jsx";
-import CookiePolicy from "./Components/Policies/CookiePolicy.jsx";
-import PrivacyPolicy from "./Components/Policies/PrivacyPolicy.jsx";
+// import Forget from "./Components/Login/Forget.jsx";
+
+const Login = lazy(() => import("./Components/Login/Login.jsx"));
+const SignUp = lazy(() => import("./Components/SignUp/Signup.jsx"));
+const StudentDashboard = lazy(() =>
+  import("./Components/Dashboard/StudentDashboard.jsx")
+);
+const DashboardNavbar = lazy(() =>
+  import("./Components/Dashboard/DashboardNavbar.jsx")
+);
+const StudentProfile = lazy(() =>
+  import("./Components/Dashboard/StudentProfile.jsx")
+);
+const CookiePolicy = lazy(() =>
+  import("./Components/Policies/CookiePolicy.jsx")
+);
+const PrivacyPolicy = lazy(() =>
+  import("./Components/Policies/PrivacyPolicy.jsx")
+);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Home />} />
       <Route path="Login" element={<Login />} />
-      <Route path="ForgetPassword" element={<Forget />} />
+      {/* <Route path="ForgetPassword" element={<Forget />} /> */}
       <Route path="StudentDashboard" element={<StudentDashboard />} />
-      <Route path="AdminDashboard" element={<AdminDashboard />} />
       <Route path="DashboardNavbar" element={<DashboardNavbar />} />
       <Route path="StudentProfile" element={<StudentProfile />} />
       <Route path="SignUp" element={<SignUp />} />

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import StudentProfile from "./StudentProfile";
 import {
   baseColor,
   checkboxDetails,
   divisionDetails,
 } from "../../Utils/Constant";
+import useCalculateMarks from "../../Utils/CustomHooks/useCalculateMarks";
 
 export default function StudentDashboard() {
   const [score, setScore] = useState({
@@ -24,32 +25,24 @@ export default function StudentDashboard() {
     socialScienceScore: "",
   });
 
-  const [marksArr, setMarksArr] = useState([]);
   const [percentage, setPercentage] = useState();
   const [defaultPercentage, setDefaultPercentage] = useState();
+  const [marksArr, setMarksArr] = useState([]);
 
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const userMarks = JSON.parse(localStorage.getItem("userMarks"));
+  const { name, rollNo, section, fatherName, myClass, dob } = userData;
+
   const studentTotalPercentage = JSON.parse(
     localStorage.getItem("studentTotalPercentage")
   );
 
-  const {
-    name,
-    rollNo,
-    userType,
-    schoolName,
-    section,
-    fatherName,
-    myClass,
-    dob,
-    id,
-  } = userData;
-
-  useEffect(() => {
-    setDefaultPercentage(studentTotalPercentage);
-    setScore(userMarks);
-  }, []);
+  useCalculateMarks(
+    setScore,
+    setPercentage,
+    setDefaultPercentage,
+    studentTotalPercentage,
+    marksArr
+  );
 
   const handleMarks = (e) => {
     const { name, value, checked } = e.target;
@@ -82,14 +75,6 @@ export default function StudentDashboard() {
       });
     }
   };
-
-  useEffect(() => {
-    let sum =
-      (marksArr.reduce((acc, curr) => acc + curr, 0) /
-        (100 * marksArr.length)) *
-        100 || 0;
-    setPercentage(Number.isInteger(sum) ? sum : sum.toFixed(1));
-  }, [marksArr]);
 
   return (
     <>
@@ -174,7 +159,7 @@ export default function StudentDashboard() {
                           : defaultPercentage >= 35 || percentage >= 35
                           ? "text-[#fe852e]"
                           : "text-[#fd0000]"
-                      } text-base md:text-xl`}
+                      } text-base md:text-lg`}
                     >
                       {`You ${
                         defaultPercentage >= 85 || percentage >= 85
@@ -192,7 +177,10 @@ export default function StudentDashboard() {
                   <div className="grid grid-cols-2 md:grid-cols-4 py-3">
                     {divisionDetails.map((division) => {
                       return (
-                        <div className="flex items-center gap-2 ">
+                        <div
+                          key={division.division}
+                          className="flex items-center gap-2 "
+                        >
                           <div
                             className={`min-w-3 h-3 md:min-w-4 md:h-4 rounded-full ${division.color}`}
                           ></div>
@@ -216,13 +204,10 @@ export default function StudentDashboard() {
           <StudentProfile
             name={name}
             rollNo={rollNo}
-            userType={userType}
-            schoolName={schoolName}
             section={section}
             fatherName={fatherName}
             myClass={myClass}
             dob={dob}
-            id={id}
           />
         </div>
       </div>
